@@ -4,11 +4,9 @@ var secondColour = document.querySelector('.second');
 var body = document.getElementById('gradient');
 var button = document.querySelector("button");
 
-function displayGradient() {
-    bgColour.textContent = body.style.background;
-}
+const displayGradient = () => bgColour.textContent = body.style.background;
 
-function colourAdjuster() {
+const colourAdjuster = () => {
     body.style.background = `linear-gradient(to left, ${secondColour.value}, ${firstColour.value})`;
     button.style.background = `linear-gradient(to left, ${secondColour.value}, ${firstColour.value})`;
 
@@ -17,30 +15,26 @@ function colourAdjuster() {
 
 colourAdjuster();
 
-function generateRandomNumber(number) {
-    return Math.floor(Math.random() * number);
-}
+const generateRandomNumber = (number) => Math.floor(Math.random() * number);
 
-function componentToHex(c) {
-    var hex = c.toString(16);
+const valueToHex = (c) => {
+    let hex = c.toString(16);
     return hex.length == 1 ? "0" + hex : hex;
 }
 
-function rgbToHex() {
-    r = generateRandomNumber(257)
-    g = generateRandomNumber(257)
-    b = generateRandomNumber(257)
-    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+const rgbToHex = () => {
+    let r = valueToHex(generateRandomNumber(257))
+    let g = valueToHex(generateRandomNumber(257))
+    let b = valueToHex(generateRandomNumber(257))
+    return `#${r}${g}${b}`
 }
 
-
-function randomizer() {
+const randomizer = () => {
     secondColour.value = rgbToHex();
     firstColour.value = rgbToHex();
     colourAdjuster();
     // console.log(randomizer);
 }
-
 
 firstColour.addEventListener("input", colourAdjuster);
 secondColour.addEventListener("input", colourAdjuster);
