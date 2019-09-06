@@ -49,3 +49,10 @@ button:hover {
     transform: scale(1.1);
     transition: 1.5s;
 }
+
+.input1,
+.input2 {
+    padding: 0.5em;
+    border: solid grey;
+    margin: 20px
+}
