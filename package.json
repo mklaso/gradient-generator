@@ -1,11 +1,19 @@
 {
-  "name": "backgroundgenerator",
+  "name": "gradient-generator",
   "version": "1.0.0",
-  "description": "",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "hi"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Martin Klasninovski",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mklaso/gradient-generator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mklaso/gradient-generator/issues"
+  },
+  "homepage": "https://github.com/mklaso/gradient-generator#readme",
+  "description": "css background colour gradient generator"
 }

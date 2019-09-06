@@ -3,12 +3,14 @@ var firstColour = document.querySelector('.first');
 var secondColour = document.querySelector('.second');
 var body = document.getElementById('gradient');
 var button = document.querySelector("button");
+var copy = document.getElementById('copy');
 
-const displayGradient = () => bgColour.textContent = body.style.background;
+const displayGradient = () => bgColour.textContent = body.style.background + ';';
 
 const colourAdjuster = () => {
     body.style.background = `linear-gradient(to left, ${secondColour.value}, ${firstColour.value})`;
     button.style.background = `linear-gradient(to left, ${secondColour.value}, ${firstColour.value})`;
+    copy.style.background = `linear-gradient(to left, ${secondColour.value}, ${firstColour.value})`;
 
     displayGradient();
 }
@@ -29,13 +31,24 @@ const rgbToHex = () => {
     return `#${r}${g}${b}`
 }
 
+//produces a random gradient colour after pressing on 'randomize' button
 const randomizer = () => {
     secondColour.value = rgbToHex();
     firstColour.value = rgbToHex();
     colourAdjuster();
-    // console.log(randomizer);
+}
+
+//adds to clipboard after pressing on 'copy' button
+const copied = () => {
+    let copiedText = document.createElement('input');
+    document.body.appendChild(temp)
+    copiedText.value = "background: " + bgColour.textContent;
+    copiedText.select();
+    document.execCommand('copy');
+    copiedText.remove();
 }
 
 firstColour.addEventListener("input", colourAdjuster);
 secondColour.addEventListener("input", colourAdjuster);
 button.addEventListener("click", randomizer);
+copy.addEventListener('click', copied);
