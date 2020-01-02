@@ -5,5 +5,6 @@ Website that generates a colour gradient. Possible options include:
 - customizing two colours with the colour buttons
 - copy the background colour gradient (CSS property) for use in your own projects
 
+Made with HTML, CSS and JS.
 
 Try it out: https://mklaso.github.io/gradient-generator/ 
