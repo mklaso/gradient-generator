@@ -9,7 +9,7 @@ var input2 = document.querySelector('.input2');
 
 const displayGradient = () => bgColour.textContent = 'background: ' + body.style.background + ';';
 
-const gradientColour = () => `linear-gradient(to left, ${secondColour.value}, ${firstColour.value})`;
+const gradientColour = () => `linear-gradient(to right, ${firstColour.value}, ${secondColour.value})`;
 
 const colourAdjuster = () => {
     body.style.background = gradientColour()
@@ -60,7 +60,7 @@ const isValidInput = (event) => {
     let filteredArray = characterArray.filter(i => ((i === '#') || (i >= 0 && i <= 9) || ((i >= 'a' && i <= 'f'))));
     //hex code
     if (event.target.value.length === 7 && filteredArray.length === 7 && filteredArray[0] === '#') {
-        (input1.value === event.target.value) ? leftSide(): rightSide()
+        (input1.value === event.target.value) ? leftSide() : rightSide()
     }
 }
 
