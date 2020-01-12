@@ -58,7 +58,7 @@ const isValidInput = (event) => {
     let characterArray = event.target.value.toLowerCase().split('');
     //removes unwanted characters
     let filteredArray = characterArray.filter(i => ((i === '#') || (i >= 0 && i <= 9) || ((i >= 'a' && i <= 'f'))));
-    //hex code
+    //checks for proper hex code format
     if (event.target.value.length === 7 && filteredArray.length === 7 && filteredArray[0] === '#') {
         (input1.value === event.target.value) ? leftSide() : rightSide()
     }
