@@ -33,55 +33,59 @@ h3 {
 }
 
 button {
-    font: 1em 'Raleway', sans-serif;
+    font: 0.7em 'Raleway', sans-serif;
     color: rgba(0, 0, 0, .8);
     border-radius: 30px;
-    border: 1.5px solid gray;
+    border: 0.1px solid black;
     padding: 15px;
 }
 
 .underColours {
     background: rgba(0, 0, 0, 1);
     border: 0px;
-    border-radius: 50px;
+    background-color: gray;
+    border-radius: 30px;
     padding: 0.9em;
-    margin-left: 16px;
-    margin-right: 16px;
-    margin-bottom: -60px;
-    margin-top: 5px;
-    width: 85px;
-    height: 27px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: -75px;
+    margin-top: px;
+    width: 79px;
+    height: 20px;
     cursor: pointer;
 }
 
 .test {
     position: relative;
-    margin-bottom: -20px;
+    margin-bottom: -23px;
 
 }
 
 #overlapL,
 #overlapR {
-    font: 125 1.2em 'Raleway', sans-serif;
+    font: 70 1em 'Raleway', sans-serif;
     color: rgba(0, 0, 0, .8);
     border-radius: 30px;
-    border: 1.5px solid gray;
+    border: 0.2px solid gray;
     padding: 0.8em;
-    margin-top: -100px;
-    margin-left: 15px;
-    margin-right: 15px;
+    margin-top: -9.5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: -3px;
     position: relative;
-    width: 112.5px;
+    width: 103px;
+    height: 45px;
     pointer-events: none;
 
 }
 
 #random {
-    font: 150 1.2em 'Raleway', sans-serif;
-    padding: 0.7em;
-    width: 150px;
+    font: 150 1em 'Raleway', sans-serif;
+    padding: 0.6em;
+    border: 0.2px solid gray;
+    width: 135px;
     text-align: center;
-    height: 57px;
+    height: 50px;
     cursor: pointer;
 }
 
@@ -120,7 +124,8 @@ h6 {
 }
 
 .upper_container {
-    margin-top: -15px;
+    margin-top: -5px;
+    margin-right: 6px;
 }
 
 .text_container {
@@ -129,15 +134,20 @@ h6 {
 }
 
 .middle_container {
-    padding: 15px;
+    padding: 30px;
+    margin-top: 10px;
 }
 
 .colours_container {
     background-color: rgba(0, 0, 0, 0.25);
-    border: 1.5px solid gray;
+    border: 0.1px solid black;
     width: 300px;
     margin: 0 auto;
     margin-top: -27.5px;
+}
+
+.bottom_container {
+    padding: 25px;
 }
 
 button:hover {
@@ -150,7 +160,7 @@ button:hover {
     padding: 0.5em;
     color: white;
     background: rgba(0, 0, 0, 0.7);
-    border: solid 0.75px grey;
+    border: solid 0.3px black;
     margin-bottom: 15px;
     opacity: 0.85;
     text-align: center;

@@ -43,6 +43,17 @@ const valueToHex = (c) => {
 const rgbToHex = (first, second, third) =>
   `#${valueToHex(first)}${valueToHex(second)}${valueToHex(third)}`;
 
+// const hexToRgb = (hex) => {
+//   var bigint = parseInt(hex, 16);
+//   var r = (bigint >> 16) & 255;
+//   var g = (bigint >> 8) & 255;
+//   var b = bigint & 255;
+//   return [r, g, b].join();
+// };
+
+// const displayhexToRgb = () => {
+
+// }
 const generateRandomRGB = () => {
   let r = generateRandomNumber(257);
   let g = generateRandomNumber(257);
@@ -73,14 +84,17 @@ const copied = (element) => {
   copiedText.remove();
 };
 
+//left colour hex
 const copyLeft = () => {
   copied("left");
 };
 
+//right colour hex
 const copyRight = () => {
   copied("right");
 };
 
+//left + right towards right linear-gradient property
 const copyGradient = () => {
   copied("gradient");
 };
@@ -101,6 +115,7 @@ const isValidInput = (event) => {
   }
 };
 
+//changes left n right side corresponding to the colours inputted
 const LRSideColourChange = (event, colour, input) => {
   if (event.keyCode === 13) {
     colour.value = input.value;
