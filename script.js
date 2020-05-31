@@ -3,27 +3,16 @@ var firstColour = document.getElementById("first");
 var secondColour = document.getElementById("second");
 var body = document.getElementById("gradient");
 var randomButton = document.getElementById("random");
-var copy = document.getElementById("copy");
+var gradientCopy = document.getElementById("copyG");
+var leftCopy = document.getElementById("copyL");
+var rightCopy = document.getElementById("copyR");
 var input1 = document.querySelector(".input1");
 var input2 = document.querySelector(".input2");
 var buttonL = document.getElementById("overlapL");
 var buttonR = document.getElementById("overlapR");
 
-// buttonL.innerHTML = firstColour.value;
-// buttonR.innerHTML = secondColour.value;
-
 const displayGradient = () => {
   bgColour.textContent = "background: " + body.style.background + ";";
-
-  //change layout to look like:
-  //1. remove left colour and right colour
-  //2. align the left and right colours in one line rather than being on seperate lines.
-  //3. place the two colour texts inside two different buttons, and for each button make the button's colour the corresponding text colour
-  //4. and make it so when each button is pressed, the corresponding button's colour is copied the clipboard.
-  //5. place a h5 or h6? (small text underneath the buttons) with the text: "note: clicking a button will copy the HEX colour to the clipboard."
-
-  //https://mycolor.space/gradient?ori=to+bottom&hex=%23051937&hex2=%23A8EB12&sub=1 good example site of what to model it after
-
   buttonL.textContent = `${firstColour.value}`;
   buttonR.textContent = `${secondColour.value}`;
 };
@@ -34,9 +23,11 @@ const gradientColour = () =>
 const colourAdjuster = () => {
   body.style.background = gradientColour();
   randomButton.style.background = gradientColour();
-  copy.style.background = gradientColour();
   buttonL.style.background = firstColour.value;
   buttonR.style.background = secondColour.value;
+  gradientCopy.style.background = gradientColour();
+  leftCopy.style.background = firstColour.value;
+  rightCopy.style.background = secondColour.value;
   displayGradient();
 };
 
@@ -66,29 +57,33 @@ const randomizer = () => {
   colourAdjuster();
 };
 
-//adds to clipboard after pressing on 'copy' button
-const copied = () => {
+//adds to clipboard after pressing on 'copy' button - helper function
+const copied = (element) => {
   let copiedText = document.createElement("input");
   document.body.appendChild(copiedText);
-  copiedText.value = bgColour.textContent;
+  if (element === "left") {
+    copiedText.value = firstColour.value;
+  } else if (element === "right") {
+    copiedText.value = secondColour.value;
+  } else {
+    copiedText.value = bgColour.textContent;
+  }
   copiedText.select();
   document.execCommand("copy");
   copiedText.remove();
 };
 
-//=============================================
-// set these up after the other bugs are fixed.
-// const copyLeft = () => {
-//   copied("left");
-// };
+const copyLeft = () => {
+  copied("left");
+};
 
-// const copyRight = () => {
-//   copied("right");
-// };
+const copyRight = () => {
+  copied("right");
+};
 
-// const copyGradient = () => {
-//   copied("gradient");
-// };
+const copyGradient = () => {
+  copied("gradient");
+};
 
 const isValidInput = (event) => {
   let characterArray = event.target.value.toLowerCase().split("");
@@ -125,8 +120,8 @@ const rightSide = () => {
 firstColour.addEventListener("input", colourAdjuster);
 secondColour.addEventListener("input", colourAdjuster);
 randomButton.addEventListener("click", randomizer);
-copy.addEventListener("click", copied);
-//buttonL.addEventListener("click", copySingularColour);
-//copyLR.addEventListener("click", copySingularColour);
+gradientCopy.addEventListener("click", copied);
+leftCopy.addEventListener("click", copyLeft);
+rightCopy.addEventListener("click", copyRight);
 input1.addEventListener("keypress", isValidInput);
 input2.addEventListener("keypress", isValidInput);
