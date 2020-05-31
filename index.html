@@ -12,23 +12,27 @@
 
 <body id="gradient">
     <h1>Gradient Generator</h1>
-    <p>Select colours</p>
+    <p class="emphasized">Select colours</p>
         <div class="test">
             <input class="underColours" id ="first" type="color" name="color1" value=#fcde7c>
             <input class="underColours" id ="second" type="color" name="color2" value=#d47ae6>
         </div>
     <button id="overlapL"></button>
-    <button id="overlapR"></button>
-    <p>Or enter values (HEX) <br>
-        hex format: #000000</p>
+    <button id="overlapR"></button><br><br>
+    <button id="random">
+        <img src="random_die.png" alt="dice icon" height = "32" width = "32" id="dice"/>
+        Generate
+    </button>
 
+    <p>OR</p>
+
+    <p class="emphasized">Enter HEX Values</p>
     <input class='input1' type='text' placeholder='enter left colour hex'>
     <input class='input2' type='text' placeholder='enter right colour hex'>
     <h2>Colour gradient in CSS:</h2>
     
     <h3></h3>
     <h4>
-        <button id="random">Randomize</button>
         <button id='copy' type="button">Copy</button>
     </h4>
 
