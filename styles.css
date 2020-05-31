@@ -8,6 +8,7 @@ body {
     background: linear-gradient(to left, green, #00FFFF);
 }
 
+
 h1 {
     font: 600 3.5em 'Raleway', sans-serif;
     color: rgba(0, 0, 0, .5);
@@ -21,11 +22,6 @@ p {
     font-size: 1.3em;
 }
 
-.first,
-.second {
-    border-color: grey;
-    background-color: rgba(0, 0, 0, .05);
-}
 
 h3 {
     font: 900 1em 'Raleway', sans-serif;
@@ -43,6 +39,44 @@ button {
     border-radius: 30px;
     border: 1.5px solid grey;
     padding: 15px;
+}
+
+/* .container {
+    position: relative;
+} */
+
+.underColours {
+    background: rgba(0, 0, 0, 1);
+    border: 0px;
+    border-radius: 50px;
+    padding: 1.5em;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: -60px;
+    margin-top: 5px;
+    width: 110px;
+}
+
+.test {
+    position: relative;
+    margin-bottom: -20px;
+
+}
+
+#overlapL,
+#overlapR {
+    font: 1em 'Raleway', sans-serif;
+    color: rgba(0, 0, 0, .8);
+    border-radius: 30px;
+    border: 1.5px solid grey;
+    padding: 1.4em;
+    margin-top: -100px;
+    margin-left: 15px;
+    margin-right: 15px;
+    position: relative;
+    width: 150px;
+    pointer-events: none;
+
 }
 
 button:hover {

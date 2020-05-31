@@ -12,20 +12,24 @@
 
 <body id="gradient">
     <h1>Gradient Generator</h1>
-    <p>Choose your colours</p>
-    <input class="first" type="color" name="color1" value=#fcde7c>
-    <input class="second" type="color" name="color2" value=#d47ae6>
+    <p>Select colours</p>
+        <div class="test">
+            <input class="underColours" id ="first" type="color" name="color1" value=#fcde7c>
+            <input class="underColours" id ="second" type="color" name="color2" value=#d47ae6>
+        </div>
+    <button id="overlapL"></button>
+    <button id="overlapR"></button>
     <p>Or enter values (HEX) <br>
         hex format: #000000</p>
 
-    <input class='input1' type='text' placeholder='enter hexcode colour 1'>
-    <input class='input2' type='text' placeholder='enter hexcode colour 2'>
-    <h2>Current colour gradient in CSS:</h2>
+    <input class='input1' type='text' placeholder='enter left colour hex'>
+    <input class='input2' type='text' placeholder='enter right colour hex'>
+    <h2>Colour gradient in CSS:</h2>
+    
     <h3></h3>
     <h4>
-        <button type="button">Randomize</button>
+        <button id="random">Randomize</button>
         <button id='copy' type="button">Copy</button>
-
     </h4>
 
     <script type="text/javascript" src="script.js"></script>
