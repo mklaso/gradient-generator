@@ -7,4 +7,4 @@ Website that generates a colour gradient. Possible options include:
 - customizing two colours with the colour buttons
 - copy the background colour gradient (CSS property) for use in your own projects
 
-  https://mklaso.github.io/gradient-generator/
+https://mklaso.github.io/gradient-generator/
