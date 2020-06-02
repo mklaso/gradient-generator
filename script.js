@@ -8,6 +8,8 @@ var leftCopy = document.getElementById("copyL");
 var rightCopy = document.getElementById("copyR");
 var input1 = document.querySelector(".input1");
 var input2 = document.querySelector(".input2");
+var converter_input = document.querySelector(".converter_input");
+var conversion_result = document.querySelector(".conversion_result");
 var buttonL = document.getElementById("overlapL");
 var buttonR = document.getElementById("overlapR");
 
@@ -52,11 +54,55 @@ const hexToRgb = (hex) => {
   return [r, g, b].join();
 };
 
+const displayConversion = (event) => {
+  if (event.keyCode === 13) {
+    conversion_result.textContent = parseRgbString(converter_input.value);
+    //conversion_result.textContent = converter_input.value;
+  }
+};
+
 //builds the hex string given r,g,b values
 const displayhexToRgb = () => {};
 
 //parses rgb string for easier conversion to hex
-const parseRgbString = (str) => {};
+const parseRgbString = (str) => {
+  //maybe use regex here, way too many edge cases otherwise - or dont account for most cases since this isn't a serious project.
+  //edge case for invalid rgb
+  if (!(str[0] === "r" && str[1] === "g" && str[2] === "b")) {
+    return "invalid";
+  }
+
+  let difference = str.length == 16 ? 2 : 1;
+  str = str.replace("(", "").replace(")", "").replace("rgb", "");
+  str += ",";
+
+  let sliced = "";
+  let arr = [];
+  let count = 0;
+  let iteration = 0;
+
+  while (iteration < 3) {
+    if (str[count] === ",") {
+      sliced = str.slice(0, count);
+      arr.push(parseInt(sliced));
+      str = str.slice(count + difference, str.length);
+      count = 0;
+      iteration++;
+    }
+    count++;
+  }
+  alert("array values:");
+  alert(arr[0]);
+  alert(arr[1]);
+  alert(arr[2]);
+  return rgbToHex(arr[0], arr[1], arr[2]);
+
+  //testing purposes
+  console.log("Array looks like: [" + arr + "]");
+  for (i = 0; i < arr.length; i++) {
+    console.log("Array element at index " + i + " is " + arr[i] + ".");
+  }
+};
 
 const generateRandomRGB = () => {
   let r = generateRandomNumber(257);
@@ -144,3 +190,4 @@ leftCopy.addEventListener("click", copyLeft);
 rightCopy.addEventListener("click", copyRight);
 input1.addEventListener("keypress", isValidInput);
 input2.addEventListener("keypress", isValidInput);
+converter_input.addEventListener("keypress", displayConversion);

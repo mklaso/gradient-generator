@@ -29,7 +29,6 @@ h3 {
     letter-spacing: 0.01em;
     opacity: 0.8;
     font-size: 0;
-
 }
 
 button {
@@ -76,7 +75,6 @@ button {
     width: 103px;
     height: 45px;
     pointer-events: none;
-
 }
 
 #random {
@@ -108,7 +106,8 @@ button {
     cursor: pointer;
 }
 
-h6 {
+h6,
+.conversion_result {
     font: 900 1em 'Raleway', sans-serif;
     color: rgba(0, 0, 0, .4);
     text-align: center;
@@ -119,7 +118,12 @@ h6 {
     margin-top: -17.5px;
 }
 
-#hex_text {
+.spacing {
+    padding: 10px;
+}
+
+#hex_text,
+#converter_text {
     margin-bottom: 7.5px;
 }
 
@@ -136,6 +140,10 @@ h6 {
 .middle_container {
     padding: 30px;
     margin-top: 10px;
+}
+
+.converter_container {
+    margin-bottom: 10px;
 }
 
 .colours_container {
@@ -155,8 +163,7 @@ button:hover {
     transition: 1.8s;
 }
 
-.input1,
-.input2 {
+.inputs {
     padding: 0.5em;
     color: white;
     background: rgba(0, 0, 0, 0.7);
@@ -164,7 +171,10 @@ button:hover {
     margin-bottom: 15px;
     opacity: 0.85;
     text-align: center;
+}
 
+.converter_input {
+    width: 250px;
 }
 
 ::placeholder {
