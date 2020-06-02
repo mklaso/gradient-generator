@@ -43,17 +43,21 @@ const valueToHex = (c) => {
 const rgbToHex = (first, second, third) =>
   `#${valueToHex(first)}${valueToHex(second)}${valueToHex(third)}`;
 
-// const hexToRgb = (hex) => {
-//   var bigint = parseInt(hex, 16);
-//   var r = (bigint >> 16) & 255;
-//   var g = (bigint >> 8) & 255;
-//   var b = bigint & 255;
-//   return [r, g, b].join();
-// };
+//direct hex to rgb conversion
+const hexToRgb = (hex) => {
+  var bigint = parseInt(hex, 16);
+  var r = (bigint >> 16) & 255;
+  var g = (bigint >> 8) & 255;
+  var b = bigint & 255;
+  return [r, g, b].join();
+};
 
-// const displayhexToRgb = () => {
+//builds the hex string given r,g,b values
+const displayhexToRgb = () => {};
 
-// }
+//parses rgb string for easier conversion to hex
+const parseRgbString = (str) => {};
+
 const generateRandomRGB = () => {
   let r = generateRandomNumber(257);
   let g = generateRandomNumber(257);
