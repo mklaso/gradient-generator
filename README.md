@@ -3,8 +3,9 @@
 Website that generates a colour gradient. Possible options include:
 
 - generating a random colour gradient
-- choosing your own colour gradient through inputting two hex colour codes
+- customizing a colour gradient by directly entering hex/rgb values
 - customizing two colours with the colour buttons
-- copy the background colour gradient (CSS property) for use in your own projects
+- copy any colour, as well as the background colour gradient (CSS property) for use in your own projects
+- convert hex -> rgb and rgb -> hex
 
 https://mklaso.github.io/gradient-generator/
