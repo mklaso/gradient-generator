@@ -35,30 +35,9 @@ const colourAdjuster = () => {
 
 colourAdjuster();
 
-const generateRandomNumber = (number) => Math.floor(Math.random() * number);
-
 const valueToHex = (c) => {
   let hex = c.toString(16);
   return hex.length == 1 ? "0" + hex : hex;
-};
-
-const rgbToHex = (first, second, third) =>
-  `#${valueToHex(first)}${valueToHex(second)}${valueToHex(third)}`;
-
-const hexToRgb = (first, second, third) => `rgb(${r}, ${g}, ${b})`;
-
-const displayConversion = (event) => {
-  //setup regex
-  //set default message of something like: [hex format: #000000 and rgb format: rgb(num1, num2, num3)]
-  if (event.keyCode === 13) {
-    //if (converter_input.value matches regex of rgb) {
-    //conversion_result.textContent = parseRgbString(converter_input.value);
-    //} else if (converter_input.value matches regex of hex) {
-    //conversion_result.textContent = parseHexString(converter_input.value);
-    //} else {
-    //conversion_result.textContent = "invalid entry.";
-    //}
-  }
 };
 
 //direct hex to rgb conversion
@@ -69,12 +48,11 @@ const parseHexString = (str) => {
   var r = (bigint >> 16) & 255;
   var g = (bigint >> 8) & 255;
   var b = bigint & 255;
-  return `rgb(${r}, ${g}, ${b})`;
+  return setToRgbOrHex(r, g, b, "rgb");
 };
 
 //parses rgb string for easier conversion to hex
 const parseRgbString = (str) => {
-  let difference = str.length == 16 ? 2 : 1;
   str = str.replace("(", "").replace(")", "").replace("rgb", "");
   str += ",";
 
@@ -87,25 +65,48 @@ const parseRgbString = (str) => {
     if (str[count] === ",") {
       sliced = str.slice(0, count);
       arr.push(parseInt(sliced));
-      str = str.slice(count + difference, str.length);
+      str = str.slice(count + 1, str.length);
       count = 0;
       iteration++;
     }
     count++;
   }
-
-  alert("array values:");
-  alert(arr[0]);
-  alert(arr[1]);
-  alert(arr[2]);
-  return rgbToHex(arr[0], arr[1], arr[2]);
+  return setToRgbOrHex(arr[0], arr[1], arr[2], "hex");
 };
+
+const setToRgbOrHex = (first, second, third, type) => {
+  if (type.localeCompare("hex") === 0) {
+    return `#${valueToHex(first)}${valueToHex(second)}${valueToHex(third)}`;
+  } else if (type.localeCompare("rgb") === 0) {
+    return `rgb(${first}, ${second}, ${third})`;
+  }
+};
+
+const displayConversion = (event) => {
+  //regex patterns
+  const hex_pattern = /^#([a-f]|[0-9]){6}$/;
+  const rgb_pattern = /^rgb[(](0*1?[0-9]{1,2}|0*2[0-4][0-9]|0*25[0-5]),(0*1?[0-9]{1,2}|0*2[0-4][0-9]|0*25[0-5]),(0*1?[0-9]{1,2}|0*2[0-4][0-9]|0*25[0-5])[)]$/;
+
+  if (event.keyCode === 13) {
+    //strip spaces + set to lowercase
+    let input_result = converter_input.value.toLowerCase().replace(/ /g, "");
+    if (input_result.match(rgb_pattern)) {
+      conversion_result.textContent = parseRgbString(input_result);
+    } else if (input_result.match(hex_pattern)) {
+      conversion_result.textContent = parseHexString(input_result);
+    } else {
+      conversion_result.textContent = "invalid entry.";
+    }
+  }
+};
+
+const generateRandomNumber = (number) => Math.floor(Math.random() * number);
 
 const generateRandomRGB = () => {
   let r = generateRandomNumber(257);
   let g = generateRandomNumber(257);
   let b = generateRandomNumber(257);
-  return rgbToHex(r, g, b);
+  return setToRgbOrHex(r, g, b, "hex");
 };
 
 //produces a random gradient colour after pressing on 'randomize' button
@@ -113,37 +114,6 @@ const randomizer = () => {
   secondColour.value = generateRandomRGB();
   firstColour.value = generateRandomRGB();
   colourAdjuster();
-};
-
-//adds to clipboard after pressing on 'copy' button - helper function
-const copied = (element) => {
-  let copiedText = document.createElement("input");
-  document.body.appendChild(copiedText);
-  if (element === "left") {
-    copiedText.value = firstColour.value;
-  } else if (element === "right") {
-    copiedText.value = secondColour.value;
-  } else {
-    copiedText.value = bgColour.textContent;
-  }
-  copiedText.select();
-  document.execCommand("copy");
-  copiedText.remove();
-};
-
-//left colour hex
-const copyLeft = () => {
-  copied("left");
-};
-
-//right colour hex
-const copyRight = () => {
-  copied("right");
-};
-
-//left + right towards right linear-gradient property
-const copyGradient = () => {
-  copied("gradient");
 };
 
 const isValidInput = (event) => {
@@ -171,13 +141,27 @@ const LRSideColourChange = (event, colour, input) => {
   }
 };
 
-const leftSide = () => {
-  LRSideColourChange(event, firstColour, input1);
+//adds to clipboard after pressing on 'copy' button - helper function
+const copied = (element) => {
+  let copiedText = document.createElement("input");
+  document.body.appendChild(copiedText);
+  if (element === "left") {
+    copiedText.value = firstColour.value;
+  } else if (element === "right") {
+    copiedText.value = secondColour.value;
+  } else {
+    copiedText.value = bgColour.textContent;
+  }
+  copiedText.select();
+  document.execCommand("copy");
+  copiedText.remove();
 };
 
-const rightSide = () => {
-  LRSideColourChange(event, secondColour, input2);
-};
+const copyLeft = () => copied("left");
+const copyRight = () => copied("right");
+const copyGradient = () => copied("gradient");
+const leftSide = () => LRSideColourChange(event, firstColour, input1);
+const rightSide = () => LRSideColourChange(event, secondColour, input2);
 
 firstColour.addEventListener("input", colourAdjuster);
 secondColour.addEventListener("input", colourAdjuster);
