@@ -45,33 +45,35 @@ const valueToHex = (c) => {
 const rgbToHex = (first, second, third) =>
   `#${valueToHex(first)}${valueToHex(second)}${valueToHex(third)}`;
 
+const hexToRgb = (first, second, third) => `rgb(${r}, ${g}, ${b})`;
+
+const displayConversion = (event) => {
+  //setup regex
+  //set default message of something like: [hex format: #000000 and rgb format: rgb(num1, num2, num3)]
+  if (event.keyCode === 13) {
+    //if (converter_input.value matches regex of rgb) {
+    //conversion_result.textContent = parseRgbString(converter_input.value);
+    //} else if (converter_input.value matches regex of hex) {
+    //conversion_result.textContent = parseHexString(converter_input.value);
+    //} else {
+    //conversion_result.textContent = "invalid entry.";
+    //}
+  }
+};
+
 //direct hex to rgb conversion
-const hexToRgb = (hex) => {
-  var bigint = parseInt(hex, 16);
+const parseHexString = (str) => {
+  //removes the # first character
+  str = str.slice(1, str.length);
+  var bigint = parseInt(str, 16);
   var r = (bigint >> 16) & 255;
   var g = (bigint >> 8) & 255;
   var b = bigint & 255;
-  return [r, g, b].join();
+  return `rgb(${r}, ${g}, ${b})`;
 };
-
-const displayConversion = (event) => {
-  if (event.keyCode === 13) {
-    conversion_result.textContent = parseRgbString(converter_input.value);
-    //conversion_result.textContent = converter_input.value;
-  }
-};
-
-//builds the hex string given r,g,b values
-const displayhexToRgb = () => {};
 
 //parses rgb string for easier conversion to hex
 const parseRgbString = (str) => {
-  //maybe use regex here, way too many edge cases otherwise - or dont account for most cases since this isn't a serious project.
-  //edge case for invalid rgb
-  if (!(str[0] === "r" && str[1] === "g" && str[2] === "b")) {
-    return "invalid";
-  }
-
   let difference = str.length == 16 ? 2 : 1;
   str = str.replace("(", "").replace(")", "").replace("rgb", "");
   str += ",";
@@ -91,17 +93,12 @@ const parseRgbString = (str) => {
     }
     count++;
   }
+
   alert("array values:");
   alert(arr[0]);
   alert(arr[1]);
   alert(arr[2]);
   return rgbToHex(arr[0], arr[1], arr[2]);
-
-  //testing purposes
-  console.log("Array looks like: [" + arr + "]");
-  for (i = 0; i < arr.length; i++) {
-    console.log("Array element at index " + i + " is " + arr[i] + ".");
-  }
 };
 
 const generateRandomRGB = () => {
