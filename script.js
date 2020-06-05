@@ -82,17 +82,30 @@ const setToRgbOrHex = (first, second, third, type) => {
   }
 };
 
-const displayConversion = (event) => {
+const validateInput = (input_type) => {
   //regex patterns
   const hex_pattern = /^#([a-f]|[0-9]){6}$/;
   const rgb_pattern = /^rgb[(](0*1?[0-9]{1,2}|0*2[0-4][0-9]|0*25[0-5]),(0*1?[0-9]{1,2}|0*2[0-4][0-9]|0*25[0-5]),(0*1?[0-9]{1,2}|0*2[0-4][0-9]|0*25[0-5])[)]$/;
 
+  input_type = input_type.toLowerCase().replace(/ /g, "");
+
+  if (input_type.match(rgb_pattern)) {
+    return "rgb";
+  } else if (input_type.match(hex_pattern)) {
+    return "hex";
+  } else {
+    return "invalid";
+  }
+};
+
+const displayConversion = (event) => {
   if (event.keyCode === 13) {
-    //strip spaces + set to lowercase
-    let input_result = converter_input.value.toLowerCase().replace(/ /g, "");
-    if (input_result.match(rgb_pattern)) {
+    let input_result = converter_input.value;
+    let status = validateInput(input_result);
+
+    if (status.localeCompare("rgb") === 0) {
       conversion_result.textContent = parseRgbString(input_result);
-    } else if (input_result.match(hex_pattern)) {
+    } else if (status.localeCompare("hex") === 0) {
       conversion_result.textContent = parseHexString(input_result);
     } else {
       conversion_result.textContent =
