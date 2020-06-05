@@ -95,7 +95,8 @@ const displayConversion = (event) => {
     } else if (input_result.match(hex_pattern)) {
       conversion_result.textContent = parseHexString(input_result);
     } else {
-      conversion_result.textContent = "invalid entry.";
+      conversion_result.textContent =
+        "HEX format - #000000 | RGB format - rgb(0, 0, 0)";
     }
   }
 };
