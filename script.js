@@ -130,29 +130,22 @@ const randomizer = () => {
   colourAdjuster();
 };
 
-const isValidInput = (event) => {
-  let characterArray = event.target.value.toLowerCase().split("");
-  //removes unwanted characters
-  let filteredArray = characterArray.filter(
-    (i) => i === "#" || (i >= 0 && i <= 9) || (i >= "a" && i <= "f")
-  );
-  //checks for proper hex code format
-  if (
-    event.target.value.length === 7 &&
-    filteredArray.length === 7 &&
-    filteredArray[0] === "#"
-  ) {
-    input1.value === event.target.value ? leftSide() : rightSide();
+const applyColourChange = (event) => {
+  if (event.keyCode === 13) {
+    let status = validateInput(event.target.value);
+    if (status.localeCompare("rgb") === 0) {
+      event.target.value = parseRgbString(event.target.value);
+      event.target === input1 ? leftSide() : rightSide();
+    } else if (status.localeCompare("hex") === 0) {
+      event.target === input1 ? leftSide() : rightSide();
+    }
   }
 };
 
 //changes left n right side corresponding to the colours inputted
-const LRSideColourChange = (event, colour, input) => {
-  if (event.keyCode === 13) {
-    colour.value = input.value;
-    colourAdjuster();
-    displayGradient();
-  }
+const LRSideColourChange = (colour, input) => {
+  colour.value = input.value;
+  colourAdjuster();
 };
 
 //adds to clipboard after pressing on 'copy' button - helper function
@@ -174,8 +167,8 @@ const copied = (element) => {
 const copyLeft = () => copied("left");
 const copyRight = () => copied("right");
 const copyGradient = () => copied("gradient");
-const leftSide = () => LRSideColourChange(event, firstColour, input1);
-const rightSide = () => LRSideColourChange(event, secondColour, input2);
+const leftSide = () => LRSideColourChange(firstColour, input1);
+const rightSide = () => LRSideColourChange(secondColour, input2);
 
 firstColour.addEventListener("input", colourAdjuster);
 secondColour.addEventListener("input", colourAdjuster);
@@ -183,6 +176,6 @@ randomButton.addEventListener("click", randomizer);
 gradientCopy.addEventListener("click", copied);
 leftCopy.addEventListener("click", copyLeft);
 rightCopy.addEventListener("click", copyRight);
-input1.addEventListener("keypress", isValidInput);
-input2.addEventListener("keypress", isValidInput);
+input1.addEventListener("keypress", applyColourChange);
+input2.addEventListener("keypress", applyColourChange);
 converter_input.addEventListener("keypress", displayConversion);
