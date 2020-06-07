@@ -22,6 +22,7 @@ const displayGradient = () => {
 const gradientColour = () =>
   `linear-gradient(to right, ${firstColour.value}, ${secondColour.value})`;
 
+//sets and changes colours of background
 const colourAdjuster = () => {
   body.style.background = gradientColour();
   randomButton.style.background = gradientColour();
@@ -40,7 +41,7 @@ const valueToHex = (c) => {
   return hex.length == 1 ? "0" + hex : hex;
 };
 
-//direct hex to rgb conversion
+//parses hex string for conversion to rgb
 const parseHexString = (str) => {
   //removes the # first character
   str = str.slice(1, str.length);
@@ -51,7 +52,7 @@ const parseHexString = (str) => {
   return setToRgbOrHex(r, g, b, "rgb");
 };
 
-//parses rgb string for easier conversion to hex
+//parses rgb string for conversion to hex
 const parseRgbString = (str) => {
   str = str.replace("(", "").replace(")", "").replace("rgb", "");
   str += ",";
@@ -82,6 +83,7 @@ const setToRgbOrHex = (first, second, third, type) => {
   }
 };
 
+//checks if user input is of proper hex/rgb format
 const validateInput = (input_type) => {
   //regex patterns
   const hex_pattern = /^#([a-f]|[0-9]){6}$/;
@@ -114,8 +116,10 @@ const displayConversion = (event) => {
   }
 };
 
+//helper for generating a random rgb val
 const generateRandomNumber = (number) => Math.floor(Math.random() * number);
 
+//creates a random colour in rgb
 const generateRandomRGB = () => {
   let r = generateRandomNumber(257);
   let g = generateRandomNumber(257);
@@ -146,19 +150,19 @@ const applyColourChange = (event) => {
   }
 };
 
-//changes left n right side corresponding to the colours inputted
+//changes left or right side corresponding to the colours inputted
 const changeSideColour = (colour, input) => {
   colour.value = input.value;
   colourAdjuster();
 };
 
-//adds to clipboard after pressing on 'copy' button - helper function
-const copied = (element) => {
+//adds to clipboard after pressing on one of the copy buttons.
+const copied = (event) => {
   let copiedText = document.createElement("input");
   document.body.appendChild(copiedText);
-  if (element === "left") {
+  if (event.target === leftCopy) {
     copiedText.value = firstColour.value;
-  } else if (element === "right") {
+  } else if (event.target === rightCopy) {
     copiedText.value = secondColour.value;
   } else {
     copiedText.value = bgColour.textContent;
@@ -168,16 +172,12 @@ const copied = (element) => {
   copiedText.remove();
 };
 
-const copyLeft = () => copied("left");
-const copyRight = () => copied("right");
-const copyGradient = () => copied("gradient");
-
 firstColour.addEventListener("input", colourAdjuster);
 secondColour.addEventListener("input", colourAdjuster);
 randomButton.addEventListener("click", randomizer);
 gradientCopy.addEventListener("click", copied);
-leftCopy.addEventListener("click", copyLeft);
-rightCopy.addEventListener("click", copyRight);
+leftCopy.addEventListener("click", copied);
+rightCopy.addEventListener("click", copied);
 input1.addEventListener("keypress", applyColourChange);
 input2.addEventListener("keypress", applyColourChange);
 converter_input.addEventListener("keypress", displayConversion);
