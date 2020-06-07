@@ -12,6 +12,8 @@ var converter_input = document.querySelector(".converter_input");
 var conversion_result = document.querySelector(".conversion_result");
 var buttonL = document.getElementById("overlapL");
 var buttonR = document.getElementById("overlapR");
+const HEX_STATUS = "hex";
+const RGB_STATUS = "rgb";
 
 const displayGradient = () => {
   bgColour.textContent = "background: " + body.style.background + ";";
@@ -49,7 +51,7 @@ const parseHexString = (str) => {
   var r = (bigint >> 16) & 255;
   var g = (bigint >> 8) & 255;
   var b = bigint & 255;
-  return setToRgbOrHex(r, g, b, "rgb");
+  return setToRgbOrHex(r, g, b, RGB_STATUS);
 };
 
 //parses rgb string for conversion to hex
@@ -72,13 +74,13 @@ const parseRgbString = (str) => {
     }
     count++;
   }
-  return setToRgbOrHex(arr[0], arr[1], arr[2], "hex");
+  return setToRgbOrHex(arr[0], arr[1], arr[2], HEX_STATUS);
 };
 
 const setToRgbOrHex = (first, second, third, type) => {
-  if (type.localeCompare("hex") === 0) {
+  if (type.localeCompare(HEX_STATUS) === 0) {
     return `#${valueToHex(first)}${valueToHex(second)}${valueToHex(third)}`;
-  } else if (type.localeCompare("rgb") === 0) {
+  } else if (type.localeCompare(RGB_STATUS) === 0) {
     return `rgb(${first}, ${second}, ${third})`;
   }
 };
@@ -92,9 +94,9 @@ const validateInput = (input_type) => {
   input_type = input_type.toLowerCase().replace(/ /g, "");
 
   if (input_type.match(rgb_pattern)) {
-    return "rgb";
+    return RGB_STATUS;
   } else if (input_type.match(hex_pattern)) {
-    return "hex";
+    return HEX_STATUS;
   } else {
     return "invalid";
   }
@@ -105,9 +107,9 @@ const displayConversion = (event) => {
     let input_result = converter_input.value;
     let status = validateInput(input_result);
 
-    if (status.localeCompare("rgb") === 0) {
+    if (status.localeCompare(RGB_STATUS) === 0) {
       conversion_result.textContent = parseRgbString(input_result);
-    } else if (status.localeCompare("hex") === 0) {
+    } else if (status.localeCompare(HEX_STATUS) === 0) {
       conversion_result.textContent = parseHexString(input_result);
     } else {
       conversion_result.textContent =
@@ -124,7 +126,7 @@ const generateRandomRGB = () => {
   let r = generateRandomNumber(257);
   let g = generateRandomNumber(257);
   let b = generateRandomNumber(257);
-  return setToRgbOrHex(r, g, b, "hex");
+  return setToRgbOrHex(r, g, b, HEX_STATUS);
 };
 
 //produces a random gradient colour after pressing on 'randomize' button
@@ -137,12 +139,12 @@ const randomizer = () => {
 const applyColourChange = (event) => {
   if (event.keyCode === 13) {
     let status = validateInput(event.target.value);
-    if (status.localeCompare("rgb") === 0) {
+    if (status.localeCompare(RGB_STATUS) === 0) {
       event.target.value = parseRgbString(event.target.value);
       event.target === input1
         ? changeSideColour(firstColour, input1)
         : changeSideColour(secondColour, input2);
-    } else if (status.localeCompare("hex") === 0) {
+    } else if (status.localeCompare(HEX_STATUS) === 0) {
       event.target === input1
         ? changeSideColour(firstColour, input1)
         : changeSideColour(secondColour, input2);
