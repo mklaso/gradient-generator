@@ -135,15 +135,19 @@ const applyColourChange = (event) => {
     let status = validateInput(event.target.value);
     if (status.localeCompare("rgb") === 0) {
       event.target.value = parseRgbString(event.target.value);
-      event.target === input1 ? leftSide() : rightSide();
+      event.target === input1
+        ? changeSideColour(firstColour, input1)
+        : changeSideColour(secondColour, input2);
     } else if (status.localeCompare("hex") === 0) {
-      event.target === input1 ? leftSide() : rightSide();
+      event.target === input1
+        ? changeSideColour(firstColour, input1)
+        : changeSideColour(secondColour, input2);
     }
   }
 };
 
 //changes left n right side corresponding to the colours inputted
-const LRSideColourChange = (colour, input) => {
+const changeSideColour = (colour, input) => {
   colour.value = input.value;
   colourAdjuster();
 };
@@ -167,8 +171,6 @@ const copied = (element) => {
 const copyLeft = () => copied("left");
 const copyRight = () => copied("right");
 const copyGradient = () => copied("gradient");
-const leftSide = () => LRSideColourChange(firstColour, input1);
-const rightSide = () => LRSideColourChange(secondColour, input2);
 
 firstColour.addEventListener("input", colourAdjuster);
 secondColour.addEventListener("input", colourAdjuster);
