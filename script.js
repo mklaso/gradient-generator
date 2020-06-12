@@ -3,23 +3,18 @@ var firstColour = document.getElementById("first");
 var secondColour = document.getElementById("second");
 var body = document.getElementById("gradient");
 var randomButton = document.getElementById("random");
-var gradientCopy = document.getElementById("copyG");
-var leftCopy = document.getElementById("copyL");
-var rightCopy = document.getElementById("copyR");
 var input1 = document.querySelector(".input1");
 var input2 = document.querySelector(".input2");
 var converter_input = document.querySelector(".converter_input");
 var conversion_result = document.querySelector(".conversion_result");
-var buttonL = document.getElementById("overlapL");
-var buttonR = document.getElementById("overlapR");
 const HEX_STATUS = "hex";
 const RGB_STATUS = "rgb";
 let orientation = "to right";
 
 const displayGradient = () => {
   bgColour.textContent = "background: " + body.style.background + ";";
-  buttonL.textContent = `${firstColour.value}`;
-  buttonR.textContent = `${secondColour.value}`;
+  document.getElementById("overlapL").textContent = `${firstColour.value}`;
+  document.getElementById("overlapR").textContent = `${secondColour.value}`;
 };
 
 const gradientColour = (orientation) =>
@@ -29,11 +24,11 @@ const gradientColour = (orientation) =>
 const colourAdjuster = () => {
   body.style.background = gradientColour(orientation);
   randomButton.style.background = gradientColour(orientation);
-  buttonL.style.background = firstColour.value;
-  buttonR.style.background = secondColour.value;
-  gradientCopy.style.background = gradientColour(orientation);
-  leftCopy.style.background = firstColour.value;
-  rightCopy.style.background = secondColour.value;
+  document.getElementById("overlapL").style.background = firstColour.value;
+  document.getElementById("overlapR").style.background = secondColour.value;
+  document.querySelector(".g").style.background = gradientColour(orientation);
+  document.querySelector(".l").style.background = firstColour.value;
+  document.querySelector(".r").style.background = secondColour.value;
   displayGradient();
 };
 
@@ -185,11 +180,12 @@ const changeSideColour = (colour, input) => {
 
 //adds to clipboard after pressing on one of the copy buttons.
 const copied = (event) => {
+  if (!event.target.matches(".copy_button")) return;
   let copiedText = document.createElement("input");
   document.body.appendChild(copiedText);
-  if (event.target === leftCopy) {
+  if (event.target.matches(".l")) {
     copiedText.value = firstColour.value;
-  } else if (event.target === rightCopy) {
+  } else if (event.target.matches(".r")) {
     copiedText.value = secondColour.value;
   } else {
     copiedText.value = bgColour.textContent;
@@ -202,10 +198,8 @@ const copied = (event) => {
 firstColour.addEventListener("input", colourAdjuster);
 secondColour.addEventListener("input", colourAdjuster);
 randomButton.addEventListener("click", randomizer);
-gradientCopy.addEventListener("click", copied);
-leftCopy.addEventListener("click", copied);
-rightCopy.addEventListener("click", copied);
 input1.addEventListener("keypress", applyColourChange);
 input2.addEventListener("keypress", applyColourChange);
 converter_input.addEventListener("keypress", displayConversion);
+document.addEventListener("click", copied);
 document.addEventListener("click", changeOrientation);

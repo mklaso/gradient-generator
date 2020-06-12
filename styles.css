@@ -84,9 +84,7 @@ button {
   font: 520 1.45em "Raleway", sans-serif;
 }
 
-#copyL,
-#copyR,
-#copyG {
+.copy_button {
   font: 300 1.2em "Raleway", sans-serif;
   border-radius: 0px;
   width: 50px;
