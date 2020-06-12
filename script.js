@@ -14,6 +14,7 @@ var buttonL = document.getElementById("overlapL");
 var buttonR = document.getElementById("overlapR");
 const HEX_STATUS = "hex";
 const RGB_STATUS = "rgb";
+let orientation = "to right";
 
 const displayGradient = () => {
   bgColour.textContent = "background: " + body.style.background + ";";
@@ -21,19 +22,43 @@ const displayGradient = () => {
   buttonR.textContent = `${secondColour.value}`;
 };
 
-const gradientColour = () =>
-  `linear-gradient(to right, ${firstColour.value}, ${secondColour.value})`;
+const gradientColour = (orientation) =>
+  `linear-gradient(${orientation}, ${firstColour.value}, ${secondColour.value})`;
 
 //sets and changes colours of background
 const colourAdjuster = () => {
-  body.style.background = gradientColour();
-  randomButton.style.background = gradientColour();
+  body.style.background = gradientColour(orientation);
+  randomButton.style.background = gradientColour(orientation);
   buttonL.style.background = firstColour.value;
   buttonR.style.background = secondColour.value;
-  gradientCopy.style.background = gradientColour();
+  gradientCopy.style.background = gradientColour(orientation);
   leftCopy.style.background = firstColour.value;
   rightCopy.style.background = secondColour.value;
   displayGradient();
+};
+
+const changeOrientation = (event) => {
+  if (!event.target.matches(".position_button")) return;
+
+  if (event.target.matches(".tl")) {
+    orientation = "to top left";
+  } else if (event.target.matches(".tr")) {
+    orientation = "to top right";
+  } else if (event.target.matches(".tm")) {
+    orientation = "to top";
+  } else if (event.target.matches(".br")) {
+    orientation = "to bottom right";
+  } else if (event.target.matches(".bl")) {
+    orientation = "to bottom left";
+  } else if (event.target.matches(".bm")) {
+    orientation = "to bottom";
+  } else if (event.target.matches(".rs")) {
+    orientation = "to right";
+  } else if (event.target.matches(".ls")) {
+    orientation = "to left";
+  }
+  gradientColour(orientation);
+  colourAdjuster();
 };
 
 colourAdjuster();
@@ -183,3 +208,4 @@ rightCopy.addEventListener("click", copied);
 input1.addEventListener("keypress", applyColourChange);
 input2.addEventListener("keypress", applyColourChange);
 converter_input.addEventListener("keypress", displayConversion);
+document.addEventListener("click", changeOrientation);

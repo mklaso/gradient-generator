@@ -1,59 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Colour Gradient Generator</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="shortcut icon" type="image/x-icon" href="images/title-icon.png" />
-</head>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="images/title-icon.png"
+    />
+  </head>
 
-<body id="gradient">
+  <body id="gradient">
     <h1>Gradient Generator</h1>
     <p class="emphasized">Select colours</p>
     <div class="upper_container">
-    <div class="test">
-        <input class="underColours" id ="first" type="color" name="color1" value=#fcde7c>
-        <input class="underColours" id ="second" type="color" name="color2" value=#d47ae6>
-    </div>
-    <button id="overlapL"></button>
-    <button id="overlapR"></button><br><br>
-    <button id="random">
-        <img src="images/random_die.png" alt="dice icon" height = "32" width = "32" id="dice"/>
+      <div class="test">
+        <input
+          class="underColours"
+          id="first"
+          type="color"
+          name="color1"
+          value="#fcde7c"
+        />
+        <input
+          class="underColours"
+          id="second"
+          type="color"
+          name="color2"
+          value="#d47ae6"
+        />
+      </div>
+      <button id="overlapL"></button>
+      <button id="overlapR"></button><br /><br />
+      <button id="random">
+        <img
+          src="images/random_die.png"
+          alt="dice icon"
+          height="32"
+          width="32"
+          id="dice"
+        />
         Generate
-    </button>
+      </button>
     </div>
     <h3></h3>
 
     <div class="middle_container">
-        <p class="emphasized" id="hex_text">Input colours</p>
-        <input class='inputs input1' type='text' placeholder='enter rgb or hex'>
-        <input class='inputs input2' type='text' placeholder='enter rgb or hex'>
+      <p class="emphasized" id="hex_text">Input colours</p>
+      <input class="inputs input1" type="text" placeholder="enter rgb or hex" />
+      <input class="inputs input2" type="text" placeholder="enter rgb or hex" />
+    </div>
+
+    <div class="orientation_container">
+      <p class="emphasized" id="orient_text">Change Orientation</p>
+      <button class="position_button tl">
+        <img class="button_img" src="images/top_left.png" />
+      </button>
+      <button class="position_button tm">
+        <img class="button_img" src="images/top.png" />
+      </button>
+      <button class="position_button rs">
+        <img class="button_img" src="images/right.png" />
+      </button>
+      <button class="position_button tr">
+        <img class="button_img" src="images/top_right.png" />
+      </button>
+      <span class="button_set2">
+        <button class="position_button bl">
+          <img class="button_img" src="images/bottom_left.png" />
+        </button>
+        <button class="position_button ls">
+          <img class="button_img" src="images/left.png" />
+        </button>
+        <button class="position_button bm">
+          <img class="button_img" src="images/bottom.png" />
+        </button>
+        <button class="position_button br">
+          <img class="button_img" src="images/bottom_right.png" />
+        </button>
+      </span>
     </div>
 
     <div class="converter_container">
-        <p class="emphasized" id="converter_text"> RGB/HEX Converter</p>
-        <input class='inputs converter_input' type='text' placeholder='enter rgb/hex for conversion'>
-        <p class="conversion_result spacing">HEX format - #000000 | RGB format - rgb(0, 0, 0)</p>
+      <p class="emphasized" id="converter_text">RGB/HEX Converter</p>
+      <input
+        class="inputs converter_input"
+        type="text"
+        placeholder="enter rgb/hex for conversion"
+      />
+      <p class="conversion_result spacing">
+        HEX format - #000000 | RGB format - rgb(0, 0, 0)
+      </p>
     </div>
 
-    <div class = "bottom_container">
-        <div class="text_container">
-            <h2 class="emphasized">CSS Colour Properties</h2>
-            <h6>note: selecting a button below will copy the CSS colour property to your clipboard.</h6>
-        </div>
-    
-        <div class="colours_container">
-            <h4>
-                <button id="copyL" type="button"></button>
-                <button id="copyG" type="button"></button>
-                <button id="copyR" type="button"></button>
-            </h4>
-        </div>
+    <div class="bottom_container">
+      <div class="text_container">
+        <h2 class="emphasized">CSS Colour Properties</h2>
+        <h6>
+          note: selecting a button below will copy the CSS colour property to
+          your clipboard.
+        </h6>
+      </div>
+
+      <div class="colours_container">
+        <h4>
+          <button id="copyL" type="button"></button>
+          <button id="copyG" type="button"></button>
+          <button id="copyR" type="button"></button>
+        </h4>
+      </div>
     </div>
     <script type="text/javascript" src="script.js"></script>
-</body>
-
+  </body>
 </html>

@@ -1,172 +1,195 @@
 body {
-    font: 'Raleway', sans-serif;
-    color: rgba(0, 0, 0, 0.5);
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: .3em;
-    top: 15%;
+  font: "Raleway", sans-serif;
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  top: 15%;
 }
 
 h1 {
-    font: 600 2.5em 'Raleway', sans-serif;
-    color: rgba(0, 0, 0, .5);
-    text-transform: uppercase;
-    letter-spacing: .5em;
-    width: 100%;
+  font: 600 2.5em "Raleway", sans-serif;
+  color: rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+  width: 100%;
 }
 
 p {
-    font-size: 1.3em;
+  font-size: 1.3em;
 }
 
 h3 {
-    font: 900 1em 'Raleway', sans-serif;
-    color: rgba(0, 0, 0, .5);
-    text-transform: none;
-    letter-spacing: 0.01em;
-    opacity: 0.8;
-    font-size: 0;
+  font: 900 1em "Raleway", sans-serif;
+  color: rgba(0, 0, 0, 0.5);
+  text-transform: none;
+  letter-spacing: 0.01em;
+  opacity: 0.8;
+  font-size: 0;
 }
 
 button {
-    font: 0.7em 'Raleway', sans-serif;
-    color: rgba(0, 0, 0, .8);
-    border-radius: 30px;
-    border: 0.1px solid black;
-    padding: 15px;
+  font: 0.7em "Raleway", sans-serif;
+  color: rgba(0, 0, 0, 0.8);
+  border-radius: 30px;
+  border: 0.1px solid black;
+  padding: 15px;
 }
 
 .underColours {
-    background: rgba(0, 0, 0, 1);
-    border: 0px;
-    background-color: gray;
-    border-radius: 30px;
-    padding: 0.9em;
-    margin: 0px 5px -75px;
-    width: 79px;
-    height: 20px;
-    cursor: pointer;
+  background: rgba(0, 0, 0, 1);
+  border: 0px;
+  background-color: gray;
+  border-radius: 30px;
+  padding: 0.9em;
+  margin: 0px 5px -75px;
+  width: 79px;
+  height: 20px;
+  cursor: pointer;
 }
 
 .test {
-    position: relative;
-    margin-bottom: -23px;
+  position: relative;
+  margin-bottom: -23px;
 }
 
 #overlapL,
 #overlapR {
-    font: 70 1em 'Raleway', sans-serif;
-    color: rgba(0, 0, 0, .8);
-    border-radius: 30px;
-    border: 0.2px solid gray;
-    padding: 0.8em;
-    margin: -9.5px 5px -3px;
-    position: relative;
-    width: 103px;
-    height: 45px;
-    pointer-events: none;
+  font: 70 1em "Raleway", sans-serif;
+  color: rgba(0, 0, 0, 0.8);
+  border-radius: 30px;
+  border: 0.2px solid gray;
+  padding: 0.8em;
+  margin: -9.5px 5px -3px;
+  position: relative;
+  width: 103px;
+  height: 45px;
+  pointer-events: none;
 }
 
 #random {
-    font: 150 1em 'Raleway', sans-serif;
-    padding: 0.6em;
-    border: 0.2px solid gray;
-    width: 135px;
-    height: 50px;
-    cursor: pointer;
+  font: 150 1em "Raleway", sans-serif;
+  padding: 0.6em;
+  border: 0.2px solid gray;
+  width: 135px;
+  height: 50px;
+  cursor: pointer;
 }
 
 #dice {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 .emphasized {
-    font: 520 1.45em 'Raleway', sans-serif;
+  font: 520 1.45em "Raleway", sans-serif;
 }
 
 #copyL,
 #copyR,
 #copyG {
-    font: 300 1.2em 'Raleway', sans-serif;
-    border-radius: 0px;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
+  font: 300 1.2em "Raleway", sans-serif;
+  border-radius: 0px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
 }
 
 h6,
 .conversion_result {
-    font: 900 1em 'Raleway', sans-serif;
-    color: rgba(0, 0, 0, .4);
-    text-transform: none;
-    letter-spacing: 0.01em;
-    opacity: 0.8;
-    font-size: 6;
-    margin-top: -17.5px;
+  font: 900 1em "Raleway", sans-serif;
+  color: rgba(0, 0, 0, 0.4);
+  text-transform: none;
+  letter-spacing: 0.01em;
+  opacity: 0.8;
+  font-size: 6;
+  margin-top: -17.5px;
 }
 
 .spacing {
-    padding: 10px;
+  padding: 10px;
 }
 
 #hex_text,
-#converter_text {
-    margin-bottom: 7.5px;
+#converter_text,
+#orient_text {
+  margin-bottom: 7.5px;
 }
 
 .upper_container {
-    margin-top: -5px;
-    margin-right: 6px;
-    margin-bottom: -25px;
+  margin-top: -5px;
+  margin-right: 6px;
+  margin-bottom: -25px;
 }
 
 .text_container {
-    padding: -10px;
-    margin-top: -30px;
+  padding: -10px;
+  margin-top: -30px;
+}
+
+.orientation_container {
+  margin-bottom: 70px;
+  margin-top: -30px;
+}
+
+.position_button {
+  border-radius: 50px;
+  background-color: white;
+  border: 0.1px solid black;
+  padding: 10px;
+}
+
+.button_img {
+  height: 16px;
+  pointer-events: none;
+}
+
+.button_set2 {
+  margin-top: 5px;
+  display: block;
 }
 
 .middle_container {
-    padding: 30px;
-    margin-top: 10px;
+  padding: 30px;
+  margin-top: 10px;
 }
 
 .converter_container {
-    margin-top: -30px;
+  margin-top: -30px;
 }
 
 .colours_container {
-    background-color: rgba(0, 0, 0, 0.25);
-    border: 0.1px solid black;
-    width: 220px;
-    margin: 0 auto;
-    margin-top: -27.5px;
-    justify-content: center;
-    align-items: center;
+  background-color: rgba(0, 0, 0, 0.25);
+  border: 0.1px solid black;
+  width: 220px;
+  margin: 0 auto;
+  margin-top: -27.5px;
+  justify-content: center;
+  align-items: center;
 }
 
 .bottom_container {
-    padding: 25px;
+  padding: 25px;
 }
 
 button:hover {
-    transform: scale(1.05);
-    transition: 1.8s;
+  transform: scale(1.05);
+  transition: 1.8s;
 }
 
 .inputs {
-    padding: 0.5em;
-    color: white;
-    background: rgba(0, 0, 0, 0.7);
-    border: solid 0.3px black;
-    margin-bottom: 15px;
-    opacity: 0.85;
-    text-align: center;
+  padding: 0.5em;
+  color: white;
+  background: rgba(0, 0, 0, 0.7);
+  border: solid 0.3px black;
+  margin-bottom: 15px;
+  opacity: 0.85;
+  text-align: center;
 }
 
 .converter_input {
-    width: 250px;
+  width: 250px;
 }
 
 ::placeholder {
-    color: white;
+  color: white;
 }
